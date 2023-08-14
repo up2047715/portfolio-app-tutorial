@@ -31,7 +31,7 @@ const gridHelper = new THREE.GridHelper(200,50);
 
 scene.add(torus);
 scene.add(pointLight,ambientLight);
-scene.add(lightHelper,gridHelper);
+// scene.add(lightHelper,gridHelper);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
