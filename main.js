@@ -11,7 +11,9 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
+
 camera.position.setZ(30);
+camera.position.setX(-3);
 
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
 const material = new THREE.MeshStandardMaterial({ color: 0x264653});
@@ -59,6 +61,24 @@ const moon = new THREE.Mesh(
 );
 
 scene.add(moon);
+moon.position.z = 30;
+moon.position.x = -10; 
+
+function moveCamera(){
+
+const t = document.body.getBoundingClientRect().top;
+moon.rotation.x += 0.005;
+moon.rotation.y += 0.0075;
+moon.rotation.z += 0.005;
+
+// Invert the scroll position values here
+camera.position.z = -t * 0.01;
+camera.position.x = -t * 0.0002;
+camera.position.y = -t * 0.0002;
+
+}
+
+document.body.onscroll = moveCamera
 
 function animate() {
   requestAnimationFrame(animate);
